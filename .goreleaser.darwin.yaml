@@ -11,42 +11,24 @@ builds:
     buildmode: plugin
     no_main_check: true
     goos:
-      - linux
+      - darwin
     goarch:
       - amd64
       - arm64
     env:
       - CGO_ENABLED=1
-    overrides:
-      - goos: linux
-        goarch: arm64
-        env:
-          - CC=aarch64-linux-gnu-gcc
-      - goos: linux
-        goarch: amd64
-        env:
-          - CC=gcc
   - id: sqlite3
     main: ./sqlite3
     binary: sqlite3.so
     buildmode: plugin
     no_main_check: true
     goos:
-      - linux
+      - darwin
     goarch:
       - amd64
       - arm64
     env:
       - CGO_ENABLED=1
-    overrides:
-      - goos: linux
-        goarch: arm64
-        env:
-          - CC=aarch64-linux-gnu-gcc
-      - goos: linux
-        goarch: amd64
-        env:
-          - CC=gcc
 
 archives:
   - format: tar.gz
@@ -57,7 +39,7 @@ archives:
       {{- .Arch }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
 checksum:
-  name_template: 'checksums.txt'
+  name_template: 'checksums_darwin.txt'
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
 # changelog:
