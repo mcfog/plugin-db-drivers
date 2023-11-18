@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine
+FROM golang:1.21-alpine
 WORKDIR /app
 
 RUN apk add --update gcc musl-dev
